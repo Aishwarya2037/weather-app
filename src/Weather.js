@@ -26,7 +26,7 @@ const Weather = () => {
     const handleWeatherCond = () => {
      return weather.data.main.humidity > 80
        ? RAIN_URL
-       : weather.data.main.temp > 50
+       : weather.data.main.temp > 20
        ? HOT_URL
        : COLD_URL;
     };
