@@ -9,9 +9,10 @@ const Weather = () => {
     const handleCityChange = (e) => {
         setCity(e.target.value);
     }
+    // https://api.openweathermap.org/data/2.5/weather?q=${city}&lon={lon}&appid={19a8553128890c6f71c12be92eb0e838}
     const fetchWeather = async () => {
         try{
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${'19a8553128890c6f71c12be92eb0e838'}`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid={19a8553128890c6f71c12be92eb0e838}`);
             setWeather(response);
             setError(" ");
         }
@@ -57,9 +58,9 @@ const Weather = () => {
         <div className='weather-info'>
           <img src={handleWeatherCond()} alt="Weather" />
           <h2>{weather.data.name}</h2>
-          <p>Temperature is <b>{weather.data.main.temp} &deg;C</b></p>
+          <p>Temperature is <b>{weather.data.main.temp} &deg;f</b></p>
           <p>Humidity is <b>{weather.data.main.humidity}</b></p>
-          <p>The weather can be described as<br/><b><i>{weather.data.weather[0].desc52ription}</i></b></p>
+          <p>The weather can be described as<br/><b><i>{weather.data.weather[0].description}</i></b></p>
         </div>
       </>
       }
